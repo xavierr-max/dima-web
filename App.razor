@@ -1,0 +1,24 @@
+﻿@*É o roteador principal da aplicação Blazor*@
+
+@*disponibilizar o estado de autenticação do usuário para todos os componentes filhos da árvore de renderização do Blazor.*@
+<CascadingAuthenticationState>
+    <Router AppAssembly="@typeof(App).Assembly">
+        <Found Context="routeData">
+            @*controla o acesso e o layout das páginas da sua aplicação Blazor baseadas nas regras de autenticação e autorização.*@
+            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
+                @*definir uma experiência de usuário para acesso negado.*@
+                <NotAuthorized>
+                    <h1>Você não tem permissão a esta funcionalidade</h1>
+                </NotAuthorized>
+            </AuthorizeRouteView>
+            @* <FocusOnNavigate RouteData="@routeData" Selector="h1" / *@
+        </Found>
+        <NotFound>
+            <PageTitle>Not found</PageTitle>
+            <LayoutView Layout="@typeof(MainLayout)">
+                <h1>Erro 404</h1>
+                <p>Página não encontrada</p>
+            </LayoutView>
+        </NotFound>
+    </Router>
+</CascadingAuthenticationState>

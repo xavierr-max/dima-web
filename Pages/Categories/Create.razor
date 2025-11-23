@@ -1,0 +1,27 @@
+﻿@page "/categorias/adicionar"
+@inherits CreateCategoryPage
+
+<MudText Typo="Typo.h3">Nova Categoria</MudText>
+<MudPaper Class="pa-8 mt-4">
+    <EditForm Model="@InputModel" OnValidSubmit="OnValidSubmitAsync">
+        @* Ativar o sistema de validação do Blazor para o formulário no qual ele está inserido *@
+        <DataAnnotationsValidator/>
+
+        <MudTextField Label="Título"
+                      HelperText="Campo obrigatório"
+                      @bind-Value="InputModel.Title"
+                      For="@(() => InputModel.Title)"/>
+
+        <MudTextField Label="Descrição"
+                      Lines="3"
+                      HelperText="Campo obrigatório"
+                      @bind-Value="InputModel.Description"
+                      For="@(() => InputModel.Description)"/>  @* -> Indicar à biblioteca de validação qual é a propriedade sendo editada, permitindo que as mensagens de erro sejam exibidas *@
+
+        <MudButton ButtonType="ButtonType.Submit"
+                   Variant="Variant.Filled"
+                   Color="Color.Primary">
+            Salvar
+        </MudButton>
+    </EditForm>
+</MudPaper>

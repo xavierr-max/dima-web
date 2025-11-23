@@ -1,0 +1,177 @@
+﻿Instalação de Pacotes e Workloads (CMD)
+
+    dotnet add package MudBlazor
+    dotnet add package Microsoft.Extensions.Http
+    dotnet add reference ../Dima.Core
+    dotnet add package Microsoft.AspNetCore.Components.WebAssembly.Authentication
+    dotnet workload install wasm-tools
+        dotnet workload update
+
+Configuração Inicial, Layouts e Temas
+
+
+    @using Dima.Web
+
+    @using System.ComponentModel.DataAnnotations
+
+    Implementação do MudBlazor (builder, @using, pacote)
+
+    modificação no app.css
+
+    exclusão do boostrap, lib, sample-data
+
+    adaptando o index html para o MudBlazor
+
+    Criação do Configuration
+
+    programando o MainLayout
+
+	criação do dark/light mode
+
+    Criação do HeadLessLayout (@using)
+
+Identity no Blazor (Autenticação)
+
+    Criação do IAccountHandler no Core
+
+    Criação dos Modelo (User) no Dima.Core
+
+    Criação do appsettings.json
+
+        Criação do BackendUrl
+
+    Implementação com Configuration do BackendUrl no Program (builder)
+
+    Implementação com Configuration do HttpClient no Program (pacote, builder, @using)
+
+    Implentação do Components.WebAssembly.Authentication (pacote, @using) --aqui--
+
+    Criação do ICookieAuthenticationStateProvider
+
+    Criação do CookieAuthenticationStateProvider
+
+    Criação do CookieHandler
+
+    Implementação do CookieHandler no Program (builder)
+
+    Implementação do CascadingAuthenticationState no App.razor
+
+    Implementação do AddAuthorizationCore no Program (builder)
+
+    Implementação do AuthenticationStateProvider, CookieAuthenticationStateProvider no Program (builder)
+
+    Implementa o workload na aplicação
+
+    Criação do AccountHandler
+
+    Implementação do IAccountHandler, AccountHandler no Program (builder)
+
+    Criação do Login.razor
+
+    Criação do Register.razor
+
+    Criação de requests no Core (Login, Register)
+
+    Implementação de Fontes no Index.html
+
+--
+
+    Criação do Register.razor.cs
+
+    Adaptando o Register.razor para receber o Register.razor.cs
+
+    Incrementar o valor da porta do FrontEnd no appsettings.json da API
+
+    Criação do Login.razor.cs
+
+    Adaptando o Register.razor para receber o Login.razor.cs
+
+    Criação do Logout.razor
+
+    Criação do Logout.razor.cs
+
+    Adaptando o MainLayout.razor
+
+    Criação da pasta Components e LoginRedirect
+
+    Criação do LoginRedirect.razor (@using)
+
+Configuração e Consumo de Serviços
+
+    Refinando o MainLayout.razor
+
+    Criação do Navmenu.razor (@using)
+
+    Criação do CategoryHandler para consumo (builder)
+
+    Criação do TransactionHandler para consumo (builder)
+
+    Habilitar no csproj o <BlazorWebAssemblyLoadGlobalizationData> (builder)
+
+    Implementacao dos CultureInfo no Program
+
+    Importar os enums (@using)
+
+    Criação das páginas no diretório Categories
+
+    Criação das páginas no diretório Transactions
+
+VOLTAR A API
+
+Relatórios (Reports) - Frontend
+
+    Criação do ReportHandler
+
+    Registrando o IReportHandler no Program (builder)
+
+    Criação dos componentes (no Components) de Reports (@using)
+
+    Alterando a Home.razor
+
+    Criação do Home.razor.cs
+    
+VOLTAR A API
+
+Area de Pedidos - Frontend
+
+    criando os handlers de Voucher, Product e Order
+    
+    registrando no Program os serviços de Voucher, Product e Order (builder)
+    
+    criacao das páginas no diretório Products
+    
+    criacao das páginas no diretório Products
+    
+    criacao do componente OrderStatus (@using)
+    
+    criacao do componente OrderAction (@using)
+    
+VOLTAR A API
+
+Stripe - Frontend
+
+    incremento dos dois scripts js para o stripe no index.html
+    
+    criacao de um arquivo js de checkout
+    
+    adicionar a chave publica do stripe no appsettings.json (builder)
+        NOTA: quando usamos o appsettings, tambem usamos a classe configuration para extrair suas informacoes 
+        appsettings.json -> Configuration.cs -> Program.cs (builder)
+    
+    criacao do StripeHandler (builder)
+    
+    incrementando o StripeApiKey na configuration no Program (builder)
+    
+    configurando o PayOrderAsync() no OrderAction para o stripe
+    
+VOLTAR A API
+
+Stripe pt.2 - Frontend
+
+    cricao da página Confirm.razor
+    
+ 
+    
+    
+    
+    

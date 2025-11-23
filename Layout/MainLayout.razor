@@ -1,0 +1,75 @@
+﻿@inherits LayoutComponentBase
+@* define uma padrao para TODAS as páginas da aplicacao e contem alguns "imports/tags" para que paginas possam usar recursos exclusivos *@
+
+@* botao para definir o tema da página *@
+<MudThemeProvider
+    @bind-IsDarkMode="_isDarkMode"
+    Theme="Configuration.Theme"/>
+@* "imports/tags "*@
+<MudSnackbarProvider/>
+<MudPopoverProvider/>
+<MudDialogProvider/>
+
+<AuthorizeView>
+    <Authorized>
+        <MudLayout>
+            @* barra na parte de cima da página *@
+            <MudAppBar>
+                @* Botao do menu *@
+                <MudIconButton
+                    Icon="@Icons.Material.Filled.Menu"
+                    Color="Color.Inherit"
+                    Edge="Edge.Start"
+                    OnClick="ToggleDrawer"/>
+                Dima
+                <MudSpacer/>
+                @* botao de nova transacao *@
+                <MudButton Href="/lancamentos/novo"
+                           Variant="Variant.Text" StartIcon="@Icons.Material.TwoTone.Add"
+                           Color="Color.Dark">
+                    NOVO LANÇAMENTO
+                </MudButton>
+                <MudSpacer/>
+                @* mostra o nome do usuário logado na tela *@
+                <MudText Type="Typo.caption">
+                    @context.User.Identity?.Name
+                </MudText>
+                @* configuracoes do nome do usuario na tela *@
+                <MudSwitch
+                    Color="Color.Inherit"
+                    @bind-Value="@_isDarkMode"
+                    T="bool"
+                    Class="ma-4"
+                    ThumbIcon="@Icons.Material.TwoTone.Lightbulb"/>
+            </MudAppBar>
+            @* cria o menu *@
+            <MudDrawer @bind-Open="@_isDrawerOpened">
+                <NavMenu/>
+            </MudDrawer>
+            <MudMainContent>
+                <MudContainer Class="mt-4">
+                    @Body
+                </MudContainer>
+            </MudMainContent>
+        </MudLayout>
+    </Authorized>
+    <NotAuthorized>
+        @* caso nao autenticado, essa pagina redirecionará para o login *@
+        <LoginRedirect/>
+    </NotAuthorized>
+</AuthorizeView>
+
+
+@*nao esta funcionando a predefinicao do tema windows*@
+
+@code
+{
+    //Menu
+    private bool _isDrawerOpened = true;
+    //Tema da página
+    private bool _isDarkMode;
+
+    //método do Menu
+    private void ToggleDrawer()
+        => _isDrawerOpened = !_isDrawerOpened;
+}

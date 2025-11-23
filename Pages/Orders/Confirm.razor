@@ -1,0 +1,23 @@
+﻿@page "/pedidos/{number}/confirmar"
+@using Dima.Core.Enums
+@inherits ConfirmPage
+
+@if (Order is not null)
+{
+    @if (Order.Status == EOrderStatus.Paid)
+    {
+        <h1>Pedido confirmado com sucesso!</h1>
+    }
+    else
+    {
+        <p>Ops, algo deu errado!</p>
+        <p>Seu pagamento não pode ser completado</p>
+    }
+}
+else
+{
+    <MudSkeleton Animation="Animation.Wave"/>
+    <MudSkeleton Animation="Animation.Wave"/>
+    <MudSkeleton Animation="Animation.Wave"/>
+    <MudSkeleton Animation="Animation.Wave"/>
+}

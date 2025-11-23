@@ -1,0 +1,17 @@
+﻿@*Define um layout simplificado para páginas específicas que não devem ter a barra superior, como telas de Login e Cadastro*@
+@inherits LayoutComponentBase
+
+<MudThemeProvider Theme="Configuration.Theme"/>
+<MudSnackbarProvider/>
+
+@*Estrutura geral do design.*@
+<MudLayout>
+    @* Área central de exibição. *@
+    <MudMainContent>
+        @* Limita a largura do conteúdo. *@
+        <MudContainer>
+            @* Onde o conteúdo da página é injetado. *@
+            @Body
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
